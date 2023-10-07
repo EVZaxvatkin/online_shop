@@ -1,9 +1,11 @@
+import logging
 from datetime import datetime
-
 from django.http import HttpResponse
 from django.shortcuts import render
-
+from online_shop.forms import GoodsForm
 from online_shop.models import Client, Order, Goods
+
+logger = logging.getLogger(__name__)
 
 
 def get_clients(request):
@@ -103,3 +105,23 @@ def edit_order_goods_id(request, order_id: int, goods_id: int):
         return HttpResponse('Товар в заказе изменен')
     else:
         return HttpResponse('Такой заказ не найден')
+
+
+def add_goods(request):
+    message = ''
+    if request.method == 'POST':
+        form = GoodsForm(request.POST, request.FILES)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            description = form.cleaned_data['description']
+            price = form.cleaned_data['price']
+            amount = form.cleaned_data['amount']
+            image = form.cleaned_data['image']
+            logger.info(f'Получили {name=}, {description=}, {price=}, {amount=}, {image=}')
+            goods = Goods(name=name, description=description, price=price, amount=amount, image=image)
+            goods.save()
+            message = 'Товар сохранен'
+    else:
+        form = GoodsForm()
+    return render(request, 'online_shop/goods_form.html',
+                  {'form': form, 'message': message})

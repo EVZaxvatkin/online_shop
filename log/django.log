@@ -1,0 +1,8 @@
+INFO 2023-10-07 10:24:22,987 autoreload 6404 3276 Watching for file changes with StatReloader
+WARNING 2023-10-07 10:24:27,273 log 6404 3368 Not Found: /
+WARNING 2023-10-07 10:24:27,273 basehttp 6404 3368 "GET / HTTP/1.1" 404 4279
+INFO 2023-10-07 10:25:42,552 autoreload 6208 17556 Watching for file changes with StatReloader
+WARNING 2023-10-07 10:25:44,939 log 6208 7836 Not Found: /
+WARNING 2023-10-07 10:25:44,939 basehttp 6208 7836 "GET / HTTP/1.1" 404 4454
+INFO 2023-10-07 10:25:52,092 basehttp 6208 2932 "GET /add_goods HTTP/1.1" 301 0
+INFO 2023-10-07 10:25:52,138 basehttp 6208 9964 "GET /add_goods/ HTTP/1.1" 200 1669
