@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class Client(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -35,3 +36,14 @@ class Order(models.Model):
 
     def __str__(self):
         return f'{self.client_id} {self.goods_id} {self.price} {self.create_at}'
+
+
+# Создание моделей для админ панели
+
+class Category(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
